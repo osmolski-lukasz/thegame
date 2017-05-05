@@ -96,9 +96,13 @@ function checkRoundWinner(playerPick, computerPick) {
     if (winnerIs == 'player') {
         playerResultElem.innerHTML = "Wygrana!";
         player.score++;
+        setGamePoints ();
+        endOfGame();
     } else if (winnerIs == 'computer') {
         computerResultElem.innerHTML = "Wygrana!";
         computer.score++;
+        setGamePoints ();
+        endOfGame();
     }
 
 }
@@ -118,13 +122,13 @@ function setGamePoints() {
 }
 
 function endOfGame() {
-    if ((player.score || computer.score) === 10) {
-        setGameElements(); {
-            switch(gameState) {
-                case 'ended':
-                newGameBtn.innerText = 'Jeszcze raz';
-
-            }
-        } 
+    if (computer.score >= 10) {
+        alert('Wygrał komputer');
+        gameState = 'ended';
+        setGameElements ();
+    } else if (player.score >= 10) {
+        alert('Wygrał ' + player.name);
+        gameState = 'ended';
+        setGameElements ();
     }
 }
